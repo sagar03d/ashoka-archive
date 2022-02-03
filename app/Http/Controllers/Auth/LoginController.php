@@ -26,6 +26,11 @@ class LoginController extends Controller
      *
      * @var string
      */
+
+    public function shutdownDefault()
+    {
+        abort(404);
+    }
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**

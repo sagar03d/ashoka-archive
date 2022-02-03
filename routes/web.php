@@ -17,6 +17,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['register' => false]);
+
+Route::get('login', [App\Http\Controllers\Auth\LoginController::class, 'shutdownDefault']);
+Route::post('login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
+Route::get('admin/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('admin.login');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::group(['prefix' => 'admin', 'as'=>'admin.', 'middleware' => 'role'], function () {
+    
+    Route::get('/home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
+    Route::resource('menus', App\Http\Controllers\Admin\MenuController::class);
+    Route::resource('{menuid}/submenus', App\Http\Controllers\Admin\SubmenuController::class);
+    Route::resource('pages', App\Http\Controllers\Admin\PageController::class);
+    Route::resource('media', App\Http\Controllers\Admin\MediaController::class);
+    
+});

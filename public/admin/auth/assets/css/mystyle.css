@@ -1,0 +1,350 @@
+a {
+    color: #18bfc3;
+}
+.row-xs {
+    margin: 0 -8px
+}
+.row-xs div[class*="col-"] {
+    padding: 0 8px
+}
+
+.customAmount {
+    position: relative;
+    text-align: center;
+}
+
+.customAmount input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 1
+}
+
+._inr {
+    padding: 13px 5px;
+    border: 1px solid #c8c8c8;
+    line-height: 1;
+    border-radius: 4px;
+}
+
+._inr h4 {
+    font-size: 17px;
+    margin-bottom: 0;
+    display: inline-block;
+    vertical-align: top
+}
+
+._inr h4 span {
+    padding-right: 3px;
+}
+
+.customAmount input:checked+._inr {
+    opacity: 1;
+    border: 1px solid #18bfc3;
+    background: #f0fffe;
+}
+
+.customAmount input:checked+._inr h4 {
+    color: #1B365D;
+}
+.customAmount:hover ._inr{
+    background: #f0fffe;
+}
+
+._3nWSp .amount-control {
+    border-radius: 3px;
+    padding: 10px 12px 10px 40px;
+    width: 100%;
+    font-size: 16px;
+    color: #1d252d;
+    font-weight: 600;
+    border: 1px solid #dde5ed;
+    outline: none
+}
+
+._3nWSp .amount-control:focus {
+    border: 1px solid #00a1ff;
+    background: #f7fdff
+}
+
+._3nWSp ._2wFvp {
+    position: absolute;
+    top: 11px;
+    left: 16px;
+    font-size: 16px;
+    font-weight: 600
+}
+
+._3nWSp button {
+    background: #00a1ff;
+    border-radius: 3px;
+    padding: 11px 15px;
+    display: inline-block;
+    vertical-align: middle;
+    border: none;
+    max-width: 245px;
+    width: 100%;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 15px 10px 0
+}
+
+._3nWSp button:hover {
+    background: #00acf8
+}
+
+.donate-money-header {
+    background: #18bfc3;
+    position: relative;
+    padding: 20px 20px 50px;
+    text-align: center;
+    border-radius: .25rem;
+    color: #fff;
+}
+/*.donate-money-header::before, .donate-money-header::after {
+    content: '';
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    position: absolute;
+    background-image: -webkit-gradient(linear,left top, right bottom,from(rgba(255,255,255,0.2)),to(rgba(0,0,0,0.2)));
+    background-image: -o-linear-gradient(top left,rgba(255,255,255,0.2),rgba(0,0,0,0.2));
+    background-image: linear-gradient(to bottom right,rgba(255,255,255,0.2),rgba(0,0,0,0.2));
+    z-index: 1;
+}*/
+.donate-money-header h4 {
+    color: #fff;
+    position: relative;
+    z-index: 2
+}
+
+.donate-money-body {
+    padding: 20px 30px 30px;
+}
+
+.donate-money-shifted {
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 1px 2px 1px #e9e9e9;
+    border-radius: 6px;
+    margin-top: -60px;
+    position: relative;
+    z-index: 1;
+}
+sup {
+    top: -1px;
+    font-size: 14px;
+    color: #e10000;
+}
+
+
+.step-2{
+    display: none
+}
+
+.successful-block
+{
+    position: relative;
+    max-width: 400px;
+    height: 400px;
+    margin: 30px auto;
+    text-align: center;
+    background: #ffffff;
+}
+.successful
+{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+        padding: 20px;
+}
+.success{
+    display:block;
+    text-align: center;
+    margin: 0 auto;
+    height: auto;
+    width: auto;
+}
+.successful h1
+{
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #4caf54;
+}
+.successful img
+{
+    margin: 0 auto;
+    width: 115px;
+    
+}
+
+.modal{
+    backdrop-filter: blur(6px);
+}
+.modal-radius {
+    border-radius: 8px
+}
+
+.modal-radius h4{
+    font-weight: 500;
+}
+
+._close_popup_buton {
+    border-radius: 50%;
+    color: #495158;
+    background: #fff;
+    font-size: 27px;
+    line-height: 1;
+    cursor: pointer;
+    width: auto;
+    border: none;
+}
+
+.modal-radius ._close_popup_buton {
+    position: absolute;
+    right:10px;
+    top: 20px;
+    z-index: 1
+}
+
+.modal-radius a{
+    color: #10978b;
+}
+
+.modal-body .modal-body{
+    padding: 30px
+}
+
+.modal.show {
+    max-height: calc(100vh - 2px);
+    overflow-y: auto;
+}
+
+
+.user-bg{
+    background: #f8f8f8;
+}
+
+.side-block {
+    margin-bottom: 30px;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.25);
+}
+.side-block ul
+{
+    padding: 25px 0 25px 25px;
+}
+.side-block ul li.active a
+{
+  background: #f6f6f6;
+  border-bottom: 1px solid #d7d7d7;
+}
+.side-block ul li a
+{
+    display: block;
+    padding: 10px 18px;
+    border-bottom: 1px solid transparent;
+}
+.side-block ul li span
+{
+    font-size: 16px;
+    margin: 0 0 5px 0;
+}
+.side-block ul li p
+{
+    margin-bottom: 0;
+    line-height: 18px;
+    margin-top: 8px;
+}
+.user-block-icon{
+    margin: 0;
+}
+.user-block-icon i {
+    width: 35px;
+    height: 35px;
+    line-height: 36px;
+    font-size: 16px;
+    background: #d33437;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    margin: 0 7px 0 0px;
+    color: #fff;
+}
+.user-text-body
+{
+    padding: 20px 25px;
+    text-align: center;
+    border-bottom: 1px solid #dee2e6;
+}
+.sidebar-text h4 {
+    font-size: 18px;
+    font-weight: 500;
+}
+.user-text-body p
+{
+  margin-bottom: 0;
+  font-size: 14px;
+}
+.shadow-sm{
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 25%)!important
+}
+
+.user-sec-title h2 {
+    font-size: 20px;
+    line-height: 24px;
+}
+.flex-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bg-theme{
+    background-color: #18bfc3
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    color: #18bfc3;
+    text-decoration: none;
+    background-color: transparent;
+}
+.dropdown-item:focus, .dropdown-item:hover {
+    color: #18bfc3;
+    background-color: transparent;
+}
+.dropdown-item {
+    font-size: 15px;
+}
+.dropdown-item.active, .dropdown-item.user-name{
+    background: #18bfc3;
+    color: #fff;
+}
+
+.custom-control{
+    padding-left: 0;
+}
+.custom-control-label {
+    padding-left: 25px
+}
+
+.bank-alert{
+    position: fixed;
+    top: 17px;
+    right: 0;;
+    z-index: 1;
+}
