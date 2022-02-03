@@ -44,6 +44,8 @@
 $(document).ready(function(){
       $('.clientDataTable').DataTable({
             "pageLength": 100,
+            "bPaginate": false,
+            "bInfo" : false,
              dom: 'Bfrtip',
              buttons: [
                 {
@@ -68,38 +70,6 @@ $(document).ready(function(){
             ]
         });
     });
-  
-
-// Restricts input for the set of matched elements to the given inputFilter function.
-(function($) {
-  $.fn.inputFilter = function(inputFilter) {
-    return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function() {
-      if (inputFilter(this.value)) {
-        this.oldValue = this.value;
-        this.oldSelectionStart = this.selectionStart;
-        this.oldSelectionEnd = this.selectionEnd;
-      } else if (this.hasOwnProperty("oldValue")) {
-        this.value = this.oldValue;
-        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
-      } else {
-        this.value = "";
-      }
-    });
-  };
-}(jQuery));
-
-/*$(function(){
-
-$(".preloader").fadeOut("slow");
-
-});*/
-
-function openSearch(){
-  $( '.search-content' ).slideDown(400);
-}
-function closeSearch(){
-  $( '.search-content' ).slideUp(400);
-}
 
 </script>
 
@@ -144,27 +114,6 @@ $("._navtoggle > a").click(function() {
 
 
 </script>
-
- <script>
-$(function() {
-  $("#select1,#select2").select2({
-  	tags: "true",
-    placeholder: "Select an option",
-    allowClear: true
-  });
-});
-</script>
-<script>
-function menuopen()
-{
-    $(".filemgr-sidebar").addClass("menuadd");
-}
-function menuclose()
-{
-    $(".filemgr-sidebar").removeClass("menuadd");
-}
-</script>
-
 
 
 
