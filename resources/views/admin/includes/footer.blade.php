@@ -5,10 +5,11 @@
 
 <script src="{{ asset('admin/js/jquery-ui.js') }}"></script>
 
+<script src="https://cdn.jsdelivr.net/gh/sagar03d/MyCDN@1.1.1/FormSubmitter.js"></script>
+    
 <script src="{{ asset('admin/js/tinymce/tinymce.min.js') }}"></script>
 <script src="{{ asset('admin/js/select2.full.min.js') }}"></script>
 <script src="{{ asset('admin/js/notify.min.js') }}"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="{{ asset('admin/js/data-table/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('admin/js/data-table/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('admin/js/data-table/dataTables.buttons.min.js') }}"></script>

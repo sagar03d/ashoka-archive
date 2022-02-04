@@ -66,7 +66,5 @@
 
 @section('js')
     @include('admin.includes.footer')
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/gh/sagar03d/MyCDN@1.1.0/FormSubmitter.js"></script>
     
 @endsection
