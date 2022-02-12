@@ -26,9 +26,17 @@ class OcrController extends Controller
     {
         if($request->file('image')) {
             $image = request()->image;
-            $imagepath = Storage::disk('public')->put('images', $image);
-            $ocr = new TesseractOCR(public_path("storage/$imagepath"));
-            dd($ocr->run());
+            // $imagepath = Storage::disk('public')->put('images', $image);
+            // return public_path("storage/$imagepath")s;
+
+            $file = time().'.'.request()->image->extension();
+            $path = 'storage/assets/'.$file;
+            request()->image->move(storage_path('app/public/assets'), $file);
+
+            $ocr = new TesseractOCR('/home/sagar/projects/ashoka/storage/app/public/assets/'.$file);
+            $text = $ocr->run();
+            
+            return response()->json(['success' => true, 'data' => $text]);
         }
     }
 
