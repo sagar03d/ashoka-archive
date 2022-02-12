@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +24,9 @@ Route::post('login', [App\Http\Controllers\Auth\LoginController::class, 'login']
 Route::get('admin/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('admin.login');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/ocr', [App\Http\Controllers\OcrController::class, 'index'])->name('ocr');
+Route::post('/ocrtest', [App\Http\Controllers\OcrController::class, 'test'])->name('ocr.test');
 
 
 Route::group(['prefix' => 'admin', 'as'=>'admin.', 'middleware' => 'role'], function () {
