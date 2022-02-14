@@ -26,9 +26,7 @@ class OcrController extends Controller
     {
         if($request->file('image')) {
             $image = request()->image;
-            // $imagepath = Storage::disk('public')->put('images', $image);
-            // return public_path("storage/$imagepath")s;
-
+            
             $file = time().'.'.request()->image->extension();
             $path = 'storage/assets/'.$file;
             request()->image->move(storage_path('app/public/assets'), $file);

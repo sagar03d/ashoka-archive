@@ -36,5 +36,9 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.', 'middleware' => 'role'], func
     Route::resource('{menuid}/submenus', App\Http\Controllers\Admin\SubmenuController::class);
     Route::resource('pages', App\Http\Controllers\Admin\PageController::class);
     Route::resource('media', App\Http\Controllers\Admin\MediaController::class);
-    
+    Route::resource('documents', App\Http\Controllers\Admin\DocumentController::class);
+    Route::resource('collections', App\Http\Controllers\Admin\CollectionController::class);
+    Route::resource('{collectionid}/subcollections', App\Http\Controllers\Admin\SubCollectionController::class);
+    Route::post('document/upload', [App\Http\Controllers\Admin\DocumentController::class, 'upload'])->name('document.file.upload');
+    Route::post('update/metadata', [App\Http\Controllers\Admin\DocumentController::class, 'updateMetadata'])->name('metadata.update');
 });
