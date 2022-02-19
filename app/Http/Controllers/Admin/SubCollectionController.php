@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Collection;
+use App\Models\Community;
 use Illuminate\Support\Str;
 
 class SubCollectionController extends Controller
@@ -13,17 +14,19 @@ class SubCollectionController extends Controller
         $this->middleware('auth');
     }
 
-    public function index($id)
+    public function index($communityid, $id)
     {
+        $community = Community::find($communityid);
         $subcollections = Collection::where('collection_id', $id)->get();
         $collection = Collection::find($id);
-        return view('admin.subcollections.index', compact('subcollections','collection'));
+        return view('admin.subcollections.index', compact('community','subcollections','collection'));
     }
 
-    public function create($id)
+    public function create($communityid, $id)
     {
         $collection = Collection::find($id);
-        return view('admin.subcollections.create', compact('collection'));
+        $community = Community::find($communityid);
+        return view('admin.subcollections.create', compact('collection','community'));
     }
 
     public function destroy($collectionid, $id)
@@ -44,7 +47,7 @@ class SubCollectionController extends Controller
         return view('admin.subcollections.create', compact('collection','subcollection'));
     }
 
-    public function store($collectionid)
+    public function store($communityid, $collectionid)
     {
         $validatedData = request()->validate([
             'name' => 'required'
@@ -53,6 +56,7 @@ class SubCollectionController extends Controller
         $subcollection = new Collection;
         $subcollection->name = request()->name;
         $subcollection->collection_id = $collectionid;
+        $subcollection->community_id = $communityid;
         $subcollection->save();
 
         return response()->json(['success' => true, 'message' => 'New Sub Collection Created.']);

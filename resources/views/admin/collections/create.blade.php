@@ -26,10 +26,10 @@
     <div class="filemgr-content-body">
         <div class="card">
         @if(isset($collection))
-            <form method="POST" action="{{ route('admin.collections.update', $collection->id) }}" id="add-form" data-redirect="{{route('admin.collections.index')}}">
+            <form method="POST" action="{{ route('admin.collections.update', [$community->id, $collection->id]) }}" id="add-form" data-redirect="{{route('admin.collections.index', $community->id)}}">
             @method('PATCH')
         @else
-            <form method="POST" action="{{ route('admin.collections.store') }}" id="add-form" data-redirect="{{route('admin.collections.index')}}">
+            <form method="POST" action="{{ route('admin.collections.store', $community->id) }}" id="add-form" data-redirect="{{route('admin.collections.index', $community->id)}}">
         @endif
             <div class="pd-20 pd-sm-30">
             

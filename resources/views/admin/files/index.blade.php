@@ -16,9 +16,9 @@
 
 <div class="filemgr-content">
     <div class="filemgr-content-header d-sm-flex align-items-center justify-content-between">
-        <h5 class="mg-b-0">Collections</h5>
+        <h5 class="mg-b-0">Files</h5>
         <div>
-            <a class="btn btn-sm pd-x-15 btn-primary btn-uppercase" href="{{route('admin.collections.create', $community)}}">
+            <a class="btn btn-sm pd-x-15 btn-primary btn-uppercase" href="{{route('admin.files.create', $item->id)}}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                 Add
             </a>
@@ -37,15 +37,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                    @forelse($collections as $collection)
+                    @forelse($files as $file)
                       <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $collection->name }}</td>
+                        <td><a href="{{ asset($file->path) }}" target="_blank">Download</a></td>
                         <td>
-                            <a href="{{route('admin.items.index', [$collection->id])}}" class="btn btn-secondary">Items</a>
-                            <a href="{{route('admin.subcollections.index', [$collection->id, $community->id])}}" class="btn btn-secondary">Sub-Collections</a>
-                            <a href="{{route('admin.collections.edit', [$collection->id, $community->id])}}" class="btn btn-secondary">Edit</a>
-                            <a href="javascript:void(0)" data-action="{{route('admin.collections.destroy', [$collection->id, $community->id])}}" class="btn btn-danger delete" data-id="{{$collection->id}}">Delete</a></td>
+                            <a href="javascript:void(0)" data-action="{{route('admin.files.destroy', [$item->id, $file->id])}}" class="btn btn-danger delete" data-id="{{$file->id}}">Delete</a>
+                        </td>
                       </tr>
                     @empty
                         <tr>

@@ -16,9 +16,23 @@
 
 <div class="filemgr-content">
     <div class="filemgr-content-header d-sm-flex align-items-center justify-content-between">
-        <h4 class="mg-b-0">{{$collection->name}} Sub-Collection</h4>
         <div>
-            <a class="btn btn-sm pd-x-15 btn-primary btn-uppercase" href="{{route('admin.subcollections.create', $collection->id)}}">
+            <h5 class="mg-b-0">{{$collection->name}} Sub-Collection</h5>
+            
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Sub Collection</li>
+                </ol>
+            </nav>
+
+        </div>
+        <div>
+            <a class="btn btn-sm pd-x-15 btn-primary btn-uppercase" href="{{route('admin.items.index', [$collection->id])}}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                Add Item
+            </a>
+            <a class="btn btn-sm pd-x-15 btn-primary btn-uppercase" href="{{route('admin.subcollections.create', [$community->id, $collection->id])}}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                 Add
             </a>
@@ -43,9 +57,9 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $subcollection->name }}</td>
                         <td>
-                            <a href="{{route('admin.subcollections.index', $subcollection->id)}}" class="btn btn-secondary">Sub-Collections</a>
-                            <a href="{{route('admin.subcollections.edit', [$collection->id, $subcollection->id])}}" class="btn btn-secondary">Edit</a>
-                            <a href="javascript:void(0)" data-action="{{route('admin.subcollections.destroy', [$collection->id, $subcollection->id])}}" class="btn btn-danger delete" data-id="{{$subcollection->id}}">Delete</a>
+                            <a href="{{route('admin.subcollections.index', [$community->id, $subcollection->id])}}" class="btn btn-secondary">Sub-Collections</a>
+                            <a href="{{route('admin.subcollections.edit', [$community->id, $collection->id, $subcollection->id])}}" class="btn btn-secondary">Edit</a>
+                            <a href="javascript:void(0)" data-action="{{route('admin.subcollections.destroy', [$community->id, $collection->id, $subcollection->id])}}" class="btn btn-danger delete" data-id="{{$subcollection->id}}">Delete</a>
                         </td>
                       </tr>
                     @empty

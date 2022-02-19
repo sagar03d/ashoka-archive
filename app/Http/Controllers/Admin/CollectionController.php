@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Collection;
+use App\Models\Community;
 use Illuminate\Support\Str;
 
 class CollectionController extends Controller
@@ -13,15 +14,17 @@ class CollectionController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index($communityid)
     {
-        $collections = Collection::with('collection')->where('collection_id', null)->get();
-        return view('admin.collections.index', compact('collections'));
+        $community = Community::find($communityid);
+        $collections = Collection::with('collection')->where('collection_id', null)->where('community_id', $communityid)->get();
+        return view('admin.collections.index', compact('collections','community'));
     }
 
-    public function create()
+    public function create($communityid)
     {
-        return view('admin.collections.create');
+        $community = Community::find($communityid);
+        return view('admin.collections.create', compact('community'));
     }
 
     public function destroy($id)
@@ -32,13 +35,13 @@ class CollectionController extends Controller
         return response()->json(['success' => true, 'message' => 'Collection Deleted']);
     }
 
-    public function edit($id)
+    public function edit($communityid, $id)
     {
         $collection = Collection::find($id);
         return view('admin.collections.create', compact('collection'));
     }
 
-    public function store()
+    public function store($communityid)
     {
         $validatedData = request()->validate([
             'name' => 'required'
@@ -46,9 +49,10 @@ class CollectionController extends Controller
         
         $collection = new Collection;
         $collection->name = request()->name;
+        $collection->community_id = $communityid;
         $collection->save();
 
-        return response()->json(['success' => true, 'message' => 'New Collection Created.']);
+        return response()->json(['success' => true, 'message' => 'New Community Created.']);
     }
 
     public function update($id)

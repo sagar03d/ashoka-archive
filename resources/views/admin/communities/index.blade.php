@@ -16,9 +16,19 @@
 
 <div class="filemgr-content">
     <div class="filemgr-content-header d-sm-flex align-items-center justify-content-between">
-        <h5 class="mg-b-0">Collections</h5>
         <div>
-            <a class="btn btn-sm pd-x-15 btn-primary btn-uppercase" href="{{route('admin.collections.create', $community)}}">
+            <h5 class="mg-b-0">Communities</h5>
+            
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Communities</li>
+                </ol>
+            </nav>
+
+        </div>
+        <div>
+            <a class="btn btn-sm pd-x-15 btn-primary btn-uppercase" href="{{route('admin.communities.create')}}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                 Add
             </a>
@@ -37,15 +47,15 @@
                   </tr>
                 </thead>
                 <tbody>
-                    @forelse($collections as $collection)
+                    @forelse($communities as $community)
                       <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $collection->name }}</td>
+                        <td>{{ $community->name }}</td>
                         <td>
-                            <a href="{{route('admin.items.index', [$collection->id])}}" class="btn btn-secondary">Items</a>
-                            <a href="{{route('admin.subcollections.index', [$collection->id, $community->id])}}" class="btn btn-secondary">Sub-Collections</a>
-                            <a href="{{route('admin.collections.edit', [$collection->id, $community->id])}}" class="btn btn-secondary">Edit</a>
-                            <a href="javascript:void(0)" data-action="{{route('admin.collections.destroy', [$collection->id, $community->id])}}" class="btn btn-danger delete" data-id="{{$collection->id}}">Delete</a></td>
+                            <a href="{{route('admin.subcommunities.index', $community->id)}}" class="btn btn-secondary">Sub-Communities</a>
+                            <a href="{{route('admin.collections.index', $community->id)}}" class="btn btn-secondary">Collections</a>
+                            <a href="{{route('admin.communities.edit', $community->id)}}" class="btn btn-secondary">Edit</a>
+                            <a href="javascript:void(0)" data-action="{{route('admin.communities.destroy', $community->id)}}" class="btn btn-danger delete" data-id="{{$community->id}}">Delete</a></td>
                       </tr>
                     @empty
                         <tr>

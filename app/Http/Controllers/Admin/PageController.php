@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Models\Page;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Http;
+use GuzzleHttp\Client;
 
 class PageController extends Controller
 {

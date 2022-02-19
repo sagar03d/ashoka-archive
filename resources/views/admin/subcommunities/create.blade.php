@@ -16,20 +16,20 @@
 
 <div class="filemgr-content">
     <div class="filemgr-content-header d-sm-flex align-items-center justify-content-between">
-        @if(isset($subcollection))
-            <h4 class="mg-b-0">Edit Sub-Collection ({{$collection->name}})</h4>
+        @if(isset($subcommunity))
+            <h4 class="mg-b-0">Edit Sub-Community ({{$community->name}})</h4>
         @else
-            <h4 class="mg-b-0">Add Sub-Collection ({{$collection->name}})</h4>
+            <h4 class="mg-b-0">Add Sub-Community ({{$community->name}})</h4>
         @endif
     </div>
 
     <div class="filemgr-content-body">
         <div class="card">
-        @if(isset($subcollection))
-            <form method="POST" action="{{ route('admin.subcollections.update', [$community->id, $collection->id, $subcollection->id]) }}" id="add-form" data-redirect="{{route('admin.subcollections.index', [$community->id, $collection->id])}}">
+        @if(isset($subcommunity))
+            <form method="POST" action="{{ route('admin.subcommunities.update', [$community->id, $subcommunity->id]) }}" id="add-form" data-redirect="{{route('admin.subcommunities.index', $community->id)}}">
             @method('PATCH')
         @else
-            <form method="POST" action="{{ route('admin.subcollections.store', [$community->id, $collection->id]) }}" id="add-form" data-redirect="{{route('admin.subcollections.index', [$community->id, $collection->id])}}">
+            <form method="POST" action="{{ route('admin.subcommunities.store', $community->id) }}" id="add-form" data-redirect="{{route('admin.subcommunities.index', $community->id)}}">
         @endif
             <div class="pd-20 pd-sm-30">
             
@@ -38,7 +38,7 @@
               <div class="form-group row">
                   <label class="col-sm-4 col-md-3 col-form-label">Name</label>
                   <div class="col-sm-4 col-md-4">
-                    <input type="text" name="name" value="{{$subcollection->name??''}}" class="form-control" placeholder="Name">
+                    <input type="text" name="name" value="{{$subcommunity->name??''}}" class="form-control" placeholder="Name">
                   </div>
               </div>
               

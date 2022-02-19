@@ -28,7 +28,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/ocr', [App\Http\Controllers\OcrController::class, 'index'])->name('ocr');
 Route::post('/ocrtest', [App\Http\Controllers\OcrController::class, 'test'])->name('ocr.test');
 
-
 Route::group(['prefix' => 'admin', 'as'=>'admin.', 'middleware' => 'role'], function () {
     
     Route::get('/home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
@@ -37,8 +36,13 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.', 'middleware' => 'role'], func
     Route::resource('pages', App\Http\Controllers\Admin\PageController::class);
     Route::resource('media', App\Http\Controllers\Admin\MediaController::class);
     Route::resource('documents', App\Http\Controllers\Admin\DocumentController::class);
-    Route::resource('collections', App\Http\Controllers\Admin\CollectionController::class);
-    Route::resource('{collectionid}/subcollections', App\Http\Controllers\Admin\SubCollectionController::class);
+    Route::resource('{collection_id}/items', App\Http\Controllers\Admin\ItemController::class);
+    Route::resource('{community_id}/collections', App\Http\Controllers\Admin\CollectionController::class);
+    Route::resource('{collection_id}/items', App\Http\Controllers\Admin\ItemController::class);
+    Route::resource('{item_id}/files', App\Http\Controllers\Admin\FileController::class);
+    Route::resource('{community_id}/{collectionid}/subcollections', App\Http\Controllers\Admin\SubCollectionController::class);
+    Route::resource('communities', App\Http\Controllers\Admin\CommunityController::class);
+    Route::resource('{communityid}/subcommunities', App\Http\Controllers\Admin\SubCommunityController::class);
     Route::post('document/upload', [App\Http\Controllers\Admin\DocumentController::class, 'upload'])->name('document.file.upload');
     Route::post('update/metadata', [App\Http\Controllers\Admin\DocumentController::class, 'updateMetadata'])->name('metadata.update');
 });
