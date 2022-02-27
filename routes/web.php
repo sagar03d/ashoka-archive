@@ -28,6 +28,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/ocr', [App\Http\Controllers\OcrController::class, 'index'])->name('ocr');
 Route::post('/ocrtest', [App\Http\Controllers\OcrController::class, 'test'])->name('ocr.test');
 
+Route::get('/about-us', [App\Http\Controllers\WelcomeController::class, 'index'])->name('ocr');
+
 Route::group(['prefix' => 'admin', 'as'=>'admin.', 'middleware' => 'role'], function () {
     
     Route::get('/home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
