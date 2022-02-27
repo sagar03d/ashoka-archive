@@ -39,7 +39,7 @@
                             </div>
                         </li>
                         <li><a href="/">Home</a></li>
-                        <li><a href="#">About Us</a></li>
+                        <li><a href="{{ url('about-us') }}">About Us</a></li>
                         <li>
                             <a href="javascript:void(0)">Whats New<i class="fa fa-caret-down pl-1"></i></a>
                             <ul>
@@ -138,7 +138,6 @@
                             <div class="menu-head-content">
                                 <h6>Ashoka Archives</h6>
                                 
-                                
                                 <span data-toggle="modal" data-target="#loginModal">Login </span>
                                 <span data-toggle="modal" data-target="#registerModal">Join</span>
                               
@@ -194,8 +193,14 @@
                                 
                             </ul>
                         </li>
-                        <li><a href="#">Login / Sign up</a></li>
-                        
+                        @if(auth()->check())
+                            <li><a href="javascript:void(0)" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a></li>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                            </form>
+                        @else
+                            <li><a href="javascript:void(0)" data-toggle="modal" data-target="#loginModal">Login / Sign up</a></li>
+                        @endif
                     </ul>
                 </nav>
             </div>
@@ -216,18 +221,19 @@
 
 
       <div class="modal-body">
-       <form method="POST" action="#">
+       <form method="POST" action="{{ route('user.login') }}" id="login" data-redirect="{{ route('user.dashboard') }}">
+           @csrf
             <div class="modal-body">
                 <button type="button" class="_close_popup_buton" data-dismiss="modal"><i class="fa fa-times"></i></button>
                 
                 <div class="modalText">
                     <h4 class="text-center mb-1">LOGIN</h4>
-                    <p class="text-center mb-4">Don't have an account? <a href="signup.php">Sign Up</a></p>
+                    <p class="text-center mb-4">Don't have an account? <a href="javascript:void(0)" data-toggle="modal" data-target="#registerModal">>Sign Up</a></p>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Mobile No*</label>
-                                <input type="number" name="" class="form-control" placeholder="Enter Mobile No">
+                                <input type="number" name="mobile_number" class="form-control" placeholder="Enter Mobile No">
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -236,7 +242,7 @@
                                     <label class="col">Password*</label>
                                     <a href="" class="col text-right">Forget Password?</a>
                                 </div>
-                                <input type="password" name="" class="form-control" placeholder="Enter Password">
+                                <input type="password" name="password" class="form-control" placeholder="Enter Password">
                             </div>
                         </div>
                     </div>
@@ -264,7 +270,8 @@
 
 
       <div class="modal-body">
-       <form method="POST" action="#">
+       <form method="POST" action="{{ route('user.register') }}" id="user_registration">
+           @csrf
             <div class="modal-body">
                 <button type="button" class="_close_popup_buton" data-dismiss="modal"><i class="icofont-plus"></i></button>
                 
@@ -275,32 +282,32 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Name(as per PAN)*</label>
-                                <input type="text" name="" class="form-control" placeholder="Enter Full Name">
+                                <input type="text" name="name" class="form-control" placeholder="Enter Full Name">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Mobile No*</label>
-                                <input type="number" name="" class="form-control" placeholder="Enter Mobile No">
+                                <input type="number" name="mobile_number" class="form-control" placeholder="Enter Mobile No">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Email ID*</label>
-                                <input type="number" name="" class="form-control" placeholder="Enter Email Address">
+                                <input type="email" name="email" class="form-control" placeholder="Enter Email Address">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Set Password*</label>
-                                <input type="password" name="" class="form-control" placeholder="Enter Password">
+                                <input type="password" name="password" class="form-control" placeholder="Enter Password">
                                 <p class="small">At least 8 characters long and include letters and numbers.</p>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Confirm Password*</label>
-                                <input type="password" name="" class="form-control" placeholder="Confirm Password">
+                                <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password">
                             </div>
                         </div>
                     </div>
@@ -311,7 +318,6 @@
                     </div>
                     <div class="clearfix text-center">
                         <button type="submit" class="btx btx-green btn-block">SIGN UP</button>
-                        
                     </div>
                    
                 </div>

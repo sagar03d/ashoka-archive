@@ -8,14 +8,13 @@
     <meta name="description" content="">
     <meta name="keywords" content=""/>
     <link rel="canonical" href="index.html"/>
-    <?php include 'includes/css.php';?>
+    @include('includes.css')
 
 </head>
 
 <body>
 
-<?php include 'includes/header.php';?>
-
+@include('includes.header')
 
 <section class="InnerBanner">
     <div class="container">
@@ -90,13 +89,8 @@
     </div>
 </section>
 
-
-
-
-
-<?php include 'includes/footer.php';?>
-<?php include 'includes/js.php';?>
-
+@include('includes.footer')
+@include('includes.js')
 
 <script>
 

@@ -26,7 +26,7 @@
     <div class="filemgr-content-body">
         <div class="card">
         @if(isset($collection))
-            <form method="POST" action="{{ route('admin.collections.update', [$community->id, $collection->id]) }}" id="add-form" data-redirect="{{route('admin.collections.index', $community->id)}}">
+            <form method="POST" action="{{ route('admin.collections.update', [$communityid, $collection->id]) }}" id="add-form" data-redirect="{{route('admin.collections.index', $communityid)}}">
             @method('PATCH')
         @else
             <form method="POST" action="{{ route('admin.collections.store', $community->id) }}" id="add-form" data-redirect="{{route('admin.collections.index', $community->id)}}">
@@ -39,6 +39,12 @@
                   <label class="col-sm-4 col-md-3 col-form-label">Name</label>
                   <div class="col-sm-4 col-md-4">
                     <input type="text" name="name" value="{{$collection->name??''}}" class="form-control" placeholder="Name">
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <label class="col-sm-4 col-md-3 col-form-label">Image</label>
+                  <div class="col-sm-4 col-md-4">
+                    <input type="file" name="file" value="{{$collection->image??''}}">
                   </div>
               </div>
               

@@ -7,11 +7,11 @@
 
 
 
-<link rel="stylesheet" type="text/css" href="css/select2.min.css">
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/style.css?v=1.3">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/select2.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/style.css?v=1.3') }}">
 <link media="all" type="text/css" rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.0/css/line.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-notify/0.2.0/css/bootstrap-notify.min.css">

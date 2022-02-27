@@ -16,13 +16,13 @@
         <div class="row">
             <div class="col-md-6 col-lg-2 col-12">
                 <div class="footer_logo mb-3">
-                    <a href="/"><img class="mb-4" alt="Logo" src="images/logo-univ.png" height="58"></a>
-                    <a href="/"><img alt="Logo" src="images/logo.png" height="42"></a>
+                    <a href="/"><img class="mb-4" alt="Logo" src="{{ asset('images/logo-univ.png') }}" height="58"></a>
+                    <a href="/"><img alt="Logo" src="{{ asset('images/logo.png') }}" height="42"></a>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3 col-12">
                 <div class="univ-photo mb-3 ml-5">
-                    <img class="img-fluid" alt="Logo" src="images/univ-photo.jpg">
+                    <img class="img-fluid" alt="Logo" src="{{ asset('images/univ-photo.jpg') }}">
                 </div>
             </div>
             <div class=" col-lg-1 col-12">

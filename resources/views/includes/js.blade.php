@@ -1,10 +1,11 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
+<script src="{{ asset('js/owl.carousel.min.js') }}"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-<script src="js/notify.min.js"></script>
-<script src="js/select2.full.min.js"></script>
+<script src="{{ asset('js/notify.min.js') }}"></script>
+<script src="{{ asset('js/select2.full.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/gh/sagar03d/MyCDN@1.1.1/FormSubmitter.js"></script>
 <script>
 $("#pull").click(function(){
         $(".right-nav").css('display','block');

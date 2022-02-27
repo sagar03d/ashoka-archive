@@ -38,7 +38,7 @@ class CollectionController extends Controller
     public function edit($communityid, $id)
     {
         $collection = Collection::find($id);
-        return view('admin.collections.create', compact('collection'));
+        return view('admin.collections.create', compact('collection','communityid'));
     }
 
     public function store($communityid)
@@ -49,6 +49,12 @@ class CollectionController extends Controller
         
         $collection = new Collection;
         $collection->name = request()->name;
+        if(request()->hasFile('file'))
+        {
+            $image = time().'.'.request()->file->extension();
+            $collection->image = 'collections/'.$image;
+            request()->file->move(public_path('collections'), $image);
+        }
         $collection->community_id = $communityid;
         $collection->save();
 

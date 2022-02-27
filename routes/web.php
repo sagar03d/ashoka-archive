@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index']);
 
 Auth::routes(['register' => false]);
 
@@ -28,7 +26,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/ocr', [App\Http\Controllers\OcrController::class, 'index'])->name('ocr');
 Route::post('/ocrtest', [App\Http\Controllers\OcrController::class, 'test'])->name('ocr.test');
 
-Route::get('/about-us', [App\Http\Controllers\WelcomeController::class, 'index'])->name('ocr');
+// Route::get('/about-us', [App\Http\Controllers\WelcomeController::class, 'about'])->name('about');
 
 Route::group(['prefix' => 'admin', 'as'=>'admin.', 'middleware' => 'role'], function () {
     
@@ -37,6 +35,7 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.', 'middleware' => 'role'], func
     Route::resource('{menuid}/submenus', App\Http\Controllers\Admin\SubmenuController::class);
     Route::resource('pages', App\Http\Controllers\Admin\PageController::class);
     Route::resource('media', App\Http\Controllers\Admin\MediaController::class);
+    Route::resource('sliders', App\Http\Controllers\Admin\SliderController::class);
     Route::resource('documents', App\Http\Controllers\Admin\DocumentController::class);
     Route::resource('{collection_id}/items', App\Http\Controllers\Admin\ItemController::class);
     Route::resource('{community_id}/collections', App\Http\Controllers\Admin\CollectionController::class);
@@ -48,3 +47,14 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.', 'middleware' => 'role'], func
     Route::post('document/upload', [App\Http\Controllers\Admin\DocumentController::class, 'upload'])->name('document.file.upload');
     Route::post('update/metadata', [App\Http\Controllers\Admin\DocumentController::class, 'updateMetadata'])->name('metadata.update');
 });
+
+Route::post('user/login', [App\Http\Controllers\User\Auth\LoginController::class, 'login'])->name('user.login');
+Route::post('user/registration', [App\Http\Controllers\User\Auth\LoginController::class, 'registration'])->name('user.register');
+
+Route::group(['prefix' => 'user', 'as'=>'user.'], function () {
+
+    Route::get('/dashboard', [App\Http\Controllers\User\DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::post('/change/{id}/user-info', [App\Http\Controllers\User\DashboardController::class, 'change'])->name('change.info');
+}); 
+
+Route::get('{slug}', [App\Http\Controllers\PageController::class, 'index'])->name('pages.index');

@@ -16,38 +16,10 @@
 
 @include('includes.header')
 
-
-<section class="banner">
-    @foreach ($sliders as $slider)
-        <img src="{{ asset($slider->path) }}" class="img-fluid">
-    @endforeach
-</section>
-
-<section class="archive-section">
-    <div class="container">
-        <div class="row">
-            @foreach ($collections as $collection)
-            
-            <div class="col-md-4">
-                <div class="archive-card">
-                    <a href="">
-                        <img src="{{ asset($collection->image??'default-img.jpg') }}" class="img-fluid">
-                        <div class="archive-overlay">
-                            <h3>{{$collection->name??''}}</h3>
-                            <button type="button" class="btn btn-angle"><i class="fa fa-angle-right"></i></button>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            
-            @endforeach
-        </div>
-    </div>
-</section>
+{!! $page->content??'' !!}
 
 @include('includes.footer')
 @include('includes.js')
-
 
 <script>
 
