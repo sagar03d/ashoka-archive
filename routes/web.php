@@ -44,6 +44,8 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.', 'middleware' => 'role'], func
     Route::resource('{community_id}/{collectionid}/subcollections', App\Http\Controllers\Admin\SubCollectionController::class);
     Route::resource('communities', App\Http\Controllers\Admin\CommunityController::class);
     Route::resource('{communityid}/subcommunities', App\Http\Controllers\Admin\SubCommunityController::class);
+    Route::get('view/{item_id}/metadata', [App\Http\Controllers\Admin\MetadataController::class, 'index'])->name('view.metadata');
+    Route::delete('/metadata/{metadata_id}', [App\Http\Controllers\Admin\MetadataController::class, 'destroy'])->name('metadata.destroy');
     Route::post('document/upload', [App\Http\Controllers\Admin\DocumentController::class, 'upload'])->name('document.file.upload');
     Route::post('update/metadata', [App\Http\Controllers\Admin\DocumentController::class, 'updateMetadata'])->name('metadata.update');
 });

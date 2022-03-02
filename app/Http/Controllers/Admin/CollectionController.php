@@ -44,7 +44,8 @@ class CollectionController extends Controller
     public function store($communityid)
     {
         $validatedData = request()->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'file' => 'required'
         ]);
         
         $collection = new Collection;

@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('items', function (Blueprint $table) {
+        Schema::create('metadata', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('metadata_file');
-            $table->bigInteger('collection_id');
-            $table->bigInteger('metadata_id')->nullable();
+            $table->bigInteger('item_id');
+            $table->string('field');
+            $table->string('value');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('items');
+        Schema::dropIfExists('metadatas');
     }
 };

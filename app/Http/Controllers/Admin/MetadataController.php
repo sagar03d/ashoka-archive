@@ -10,35 +10,36 @@ use App\Models\Metadata;
 use Collator;
 use Illuminate\Support\Str;
 
-class ItemController extends Controller
+class MetadataController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    public function index($collectionid)
+    public function index($itemid)
     {
-        $collection = Collection::find($collectionid);
-        $items = Item::with('metadatas')->where('collection_id', $collectionid)->get();
-        return view('admin.items.index', compact('collection','items'));
-    }
-
-    public function create($collectionid)
-    {
-        $collection = Collection::find($collectionid);
-        return view('admin.items.create', compact('collection'));
+        $metadatas = Metadata::where('item_id', $itemid)->get();
+        return view('admin.metadata.show', compact('metadatas'));
     }
 
     public function destroy($id)
     {
-        $item = Item::find($id);
-        if($item){
-            $item->delete();
-            $data = Metadata::where('item_id', $item->id)->delete();
+        $metadata = Metadata::find($id);
+        if($metadata){
+            $metadata->delete();
+        }
+        else{
+            return response()->json(['success' => false, 'message' => 'Something went wrong!']);
         }
         
-        return response()->json(['success' => true, 'message' => 'Item Deleted']);
+        return response()->json(['success' => true, 'message' => 'Metadata Deleted']);
+    }
+    /* 
+    public function create($collectionid)
+    {
+        $collection = Collection::find($collectionid);
+        return view('admin.items.create', compact('collection'));
     }
 
     public function edit($collectionid, $id)
@@ -136,4 +137,5 @@ class ItemController extends Controller
 
         return response()->json(['success' => true, 'message' => 'New Item Updated.']);
     }
+    */
 }

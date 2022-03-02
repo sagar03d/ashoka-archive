@@ -41,6 +41,12 @@
                     <input type="text" name="name" value="{{$item->name??''}}" class="form-control" placeholder="Name">
                   </div>
               </div>
+              <div class="form-group row">
+                  <label class="col-sm-4 col-md-3 col-form-label">Upload Metadata</label>
+                  <div class="col-sm-4 col-md-4">
+                    <input type="file" name="file" class="form-control">
+                  </div>
+              </div>
               
               <button type="submit" class="btn btn-primary btn-uppercase mg-b-5 mg-sm-b-0 submitbtn">Save</button>
           
